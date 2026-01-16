@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double f(double x) { return 2*x*x*x -4*x*x +3*x -6; }
+
+double bisection(double a, double b, double eps) {
+    double mid;
+    while(fabs(f(mid=a+b/2)) > eps) {
+        if(f(a)*f(mid) < 0) b = mid;
+        else a = mid;
+    }
+    return mid;
+}
+int main(){ cout << bisection(-10,10,1e-5); return 0; }
